@@ -1,9 +1,5 @@
 package com.mohagi.server.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-
 import com.mohagi.server.model.location;
 
 public class Util {
@@ -57,6 +53,32 @@ public class Util {
 		String fav_50 = split[20];
 		String fav_60 = split[21];
 		
+		location loc = new location(loc_id, loc_name, loc_addr, loc_time, big_ctg, small_ctg, latitude, longitude, star, category, fav_man, fav_woman, atmosphere, topic, purpose, fav_10, fav_20, fav_30, fav_40 ,fav_50, fav_60);
+		return loc;
+	}
+    
+    public static location SplitToLocationNaturalJoinFilter(String[] split) {
+    	String loc_name = split[0];
+		String loc_id = split[1];
+		String loc_addr = split[2];
+		String loc_time = split[4];
+		String big_ctg = split[5];
+		String small_ctg = split[6];
+		String latitude = split[7];
+		String longitude = split[8];
+		String star = split[9];
+		String category = split[10];
+		String fav_man = split[11];
+		String fav_woman = split[12];
+		String atmosphere = split[13];
+		String topic = split[14];
+		String purpose = split[15];
+		String fav_10 = split[16];
+		String fav_20 = split[17];
+		String fav_30 = split[18];
+		String fav_40 = split[19];
+		String fav_50 = split[20];
+		String fav_60 = split[21];
 		location loc = new location(loc_id, loc_name, loc_addr, loc_time, big_ctg, small_ctg, latitude, longitude, star, category, fav_man, fav_woman, atmosphere, topic, purpose, fav_10, fav_20, fav_30, fav_40 ,fav_50, fav_60);
 		return loc;
 	}
@@ -133,23 +155,18 @@ public class Util {
 		return "";
     }
     
-    public static Statement initialize() {
-    	Statement st = null;
-    	try {
-  	      // create our mysql database connection
-  	      String myUrl = "jdbc:mysql://localhost/mohagi";
-  	      Connection conn = DriverManager.getConnection(myUrl, "root", "root");
-
-  	      // create the java statement
-  	      st = conn.createStatement();
-  	      
-  	      // execute the query, and get a java resultset
-//  	      rs = st.executeQuery(query);
-  	      
-//  	      st.close();
-  	    } catch (Exception e) {
-  	      System.err.println(e.getMessage());
-  	    }
-    	return st;
+    public static String bigtypeConvertToString(String id) {
+    	if(id.equals("1"))
+    		return "맛집";
+    	else if(id.equals("2"))
+    		return "카페";
+    	else if(id.equals("3"))
+    		return "놀이";
+    	else if(id.equals("4"))
+    		return "문화";
+    	else if(id.equals("5"))
+    		return "기타";
+    	return "";
     }
+    
 }

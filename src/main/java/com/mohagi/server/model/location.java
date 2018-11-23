@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 @Entity
 @Table
 public class location {
@@ -145,6 +148,78 @@ public class location {
 	public void setStar(String star) {
 		this.star = star;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getFav_man() {
+		return fav_man;
+	}
+	public void setFav_man(String fav_man) {
+		this.fav_man = fav_man;
+	}
+	public String getFav_woman() {
+		return fav_woman;
+	}
+	public void setFav_woman(String fav_woman) {
+		this.fav_woman = fav_woman;
+	}
+	public String getAtmosphere() {
+		return atmosphere;
+	}
+	public void setAtmosphere(String atmosphere) {
+		this.atmosphere = atmosphere;
+	}
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	public String getPurpose() {
+		return purpose;
+	}
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
+	public String getFav_10() {
+		return fav_10;
+	}
+	public void setFav_10(String fav_10) {
+		this.fav_10 = fav_10;
+	}
+	public String getFav_20() {
+		return fav_20;
+	}
+	public void setFav_20(String fav_20) {
+		this.fav_20 = fav_20;
+	}
+	public String getFav_30() {
+		return fav_30;
+	}
+	public void setFav_30(String fav_30) {
+		this.fav_30 = fav_30;
+	}
+	public String getFav_40() {
+		return fav_40;
+	}
+	public void setFav_40(String fav_40) {
+		this.fav_40 = fav_40;
+	}
+	public String getFav_50() {
+		return fav_50;
+	}
+	public void setFav_50(String fav_50) {
+		this.fav_50 = fav_50;
+	}
+	public String getFav_60() {
+		return fav_60;
+	}
+	public void setFav_60(String fav_60) {
+		this.fav_60 = fav_60;
+	}
 	public location()	{}
 	public location(String loc_id, String loc_name, String loc_addr, String loc_number, String loc_time, String big_ctg,
 			String small_ctg, String latitude, String longitude, String star) {
@@ -187,5 +262,35 @@ public class location {
 		this.fav_50 = fav_50;
 		this.fav_60 = fav_60;
 	}
-	
+	public String toJson() {
+		JSONObject json = new JSONObject();
+		try {
+			json.put("loc_id", loc_id);
+			json.put("loc_name", loc_name);
+			json.put("loc_addr", loc_addr);
+			json.put("loc_number", loc_number);
+			json.put("loc_time", loc_time);
+			json.put("big_ctg", big_ctg);
+			json.put("small_ctg", small_ctg);
+			json.put("latitude", latitude);
+			json.put("longitude", longitude);
+			json.put("star", star);
+			json.put("category", category);
+			json.put("fav_man", fav_man);
+			json.put("fav_woman", fav_woman);
+			json.put("atmosphere", atmosphere);
+			json.put("topic", topic);
+			json.put("purpose", purpose);
+			json.put("fav_10", fav_10);
+			json.put("fav_20", fav_20);
+			json.put("fav_30", fav_30);
+			json.put("fav_40", fav_40);
+			json.put("fav_50", fav_50);
+			json.put("fav_60", fav_60);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return json.toString();
+	}
 }
